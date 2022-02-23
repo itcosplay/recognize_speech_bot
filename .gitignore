@@ -130,3 +130,5 @@ dmypy.json
 
 creds.json
 .creds.json
+
+training_phrases.json
