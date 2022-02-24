@@ -1,3 +1,4 @@
+import os
 import json
 
 from google.cloud import dialogflow
@@ -43,7 +44,11 @@ def create_intent (
     )
 
     intents_client.create_intent (
-        request={"parent": parent, "intent": intent, 'language_code': 'ru'}
+        request = {
+            "parent": parent,
+            "intent": intent,
+            'language_code': os.environ['LANGUAGE_CODE']
+        }
     )
 
 

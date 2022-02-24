@@ -1,6 +1,6 @@
 from environs import Env
 
-from dilogflow_scripts import train_dialog_flow
+from dialogflow_scripts import train_dialog_flow
 
 
 if __name__ == '__main__':

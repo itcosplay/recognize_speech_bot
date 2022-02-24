@@ -9,7 +9,7 @@ from telegram.ext import (
     Filters
 )
 
-from dilogflow_scripts import detect_intent_texts
+from dialogflow_scripts import detect_intent_texts
 
 
 def command_start(update: Update, context: CallbackContext):
