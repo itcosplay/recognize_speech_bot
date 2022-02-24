@@ -13,7 +13,7 @@ def detect_intent_texts(project_id, session_id, text, language_code):
         request={"session": session, "query_input": query_input}
     )
 
-    return response.query_result.fulfillment_text
+    return response.query_result
 
 
 def create_intent (

@@ -32,7 +32,7 @@ def answer_from_dialog_flow(update: Update, context: CallbackContext):
     )
     context.bot.send_message (
         chat_id=update.effective_chat.id,
-        text=answer
+        text=answer.fulfillment_text
     )
 
 
