@@ -57,13 +57,12 @@ def train_dialog_flow(project_id):
         training_phrases = json.load(file)
 
     for training_phrase in training_phrases:
-        display_name = training_phrase
         questions = training_phrases[training_phrase]['questions']
         answer = training_phrases[training_phrase]['answer']
 
         create_intent (
             project_id=project_id,
-            display_name=display_name,
+            display_name=training_phrase,
             training_phrases_parts=questions,
             message_texts=[answer]
         )
