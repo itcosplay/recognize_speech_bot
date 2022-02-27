@@ -12,10 +12,7 @@ from dialogflow_scripts import detect_intent_texts
 logger = logging.getLogger(__file__)
 
 
-def answer_from_dialog_flow (event, vk_api):
-    project_id = os.environ['GOOGLE_PROJECT_ID']
-    language_code = os.environ['LANGUAGE_CODE']
-
+def answer_from_dialog_flow (event, vk_api, project_id, language_code):
     answer = detect_intent_texts (
         project_id=project_id,
         session_id=event.user_id,
@@ -40,13 +37,15 @@ def main():
         level=logging.INFO
     )
 
+    project_id = os.environ['GOOGLE_PROJECT_ID']
+    language_code = os.environ['LANGUAGE_CODE']
     vk_session = vk_api.VkApi(token=os.environ['VK_GROUP_TOKEN'])
     vk_api = vk_session.get_api()
     longpoll = VkLongPoll(vk_session)
 
     for event in longpoll.listen():
         if event.type == VkEventType.MESSAGE_NEW and event.to_me:
-            answer_from_dialog_flow(event, vk_api)
+            answer_from_dialog_flow(event, vk_api, project_id, language_code)
 
 
 if __name__ == '__main__':
