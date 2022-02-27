@@ -32,6 +32,14 @@ def answer_from_dialog_flow (event, vk_api):
 
 
 def main():
+    env = Env()
+    env.read_env()
+
+    logging.basicConfig (
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        level=logging.INFO
+    )
+
     vk_session = vk_api.VkApi(token=os.environ['VK_GROUP_TOKEN'])
     vk_api = vk_session.get_api()
     longpoll = VkLongPoll(vk_session)
@@ -42,24 +50,8 @@ def main():
 
 
 if __name__ == '__main__':
-    env = Env()
-    env.read_env()
-
-    logging.basicConfig (
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        level=logging.INFO
-    )
-
     try:
         main()
 
     except Exception as error:
         logger.error(error)
-
-    
-    
-    
-
-    
-        
-            

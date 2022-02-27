@@ -42,7 +42,15 @@ def answer_from_dialog_flow(update: Update, context: CallbackContext):
     )
 
 
-def start_bot():
+def main():
+    env = Env()
+    env.read_env()
+
+    logging.basicConfig (
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        level=logging.INFO
+    )
+
     updater = Updater(os.environ['TG_BOT_TOKEN'])
     dispatcher = updater.dispatcher
 
@@ -59,16 +67,8 @@ def start_bot():
 
 
 if __name__ == '__main__':
-    env = Env()
-    env.read_env()
-
-    logging.basicConfig (
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        level=logging.INFO
-    )
-    
     try:
-        start_bot()
+        main()
     
     except Exception as error:
         logger.error(error)
