@@ -67,8 +67,4 @@ def main():
 
 
 if __name__ == '__main__':
-    try:
-        main()
-    
-    except Exception as error:
-        logger.error(error)
+    main()
